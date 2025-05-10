@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="src/icons/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="src/css/app.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert</title>
+</head>
+<body>
+    <div class="classic-layout">
+        <div class="layout">
+            <div class="layer">
+                <div class="header">
+                    <div class="head header-icon d-flex d-align-center d-justify-center">
+                        <img src="src/icons/logo.png" width="24" alt="convert">
+                    </div>
+                    <div class="head d-flex d-align-center">
+                        <text class="heavy">Convert</text>
+                    </div>
+                </div>
+                <br>
+                <div class="coin-container d-flex d-align-center d-justify-center">
+                    <img src="src/icons/coin.png" width="150" alt="coin">
+                </div>
+                <br><br>
+                <div class="input-container d-flex d-align-center d-justify-center">
+                    <div class="input-class">
+                        <div class="inputbar-container">
+                            <div class="input-bar d-flex d-align-center d-justify-center">
+                                <input type="number" autofocus name="input-bar" placeholder="1 USD to NGN" id="inp1" onkeydown="start()">
+                            </div>
+                            <div class="input-bar d-flex d-align-center d-justify-center">
+                                <text class="norm">USDT</text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-container cust d-flex d-align-center d-justify-center">
+                    <div class="input-class">
+                        <div class="inputbar-container">
+                            <div class="input-bar d-flex d-align-center d-justify-center">
+                                <input type="number" value="1575.25" autofocus name="input-bar" placeholder="1575.25 NGN equals 1 USD" id="inp2" onkeydown="starts()">
+                            </div>
+                            <div class="input-bar d-flex d-align-center d-justify-center">
+                                <text class="norm">NGN</text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit-container" id="submit" onclick="start()">
+                    <div class="submit d-flex d-align-center d-justify-center">
+                        <div class="loader" id="loader">
+                            <div class="load"></div>
+                        </div>
+                        <text class="norm" id="norm">Check now</text>
+                    </div>
+                    <div class="submit d-flex d-align-center d-justify-center">
+                        <img src="src/icons/arrrow-right.svg" alt="fa-arrow-right">
+                    </div>
+                </div>
+            </div>
+            <div class="layer">
+                <div class="layered">
+                    <div class="lay d-flex d-align-center d-justify-center">
+                        <img src="src/icons/calc.svg" alt="calculator">
+                    </div>
+                    <div class="lay d-flex d-align-center d-justify-center">
+                        <img src="src/icons/settings.svg" alt="settings">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layout"></div>
+    </div>
+
+    <script>
+        function start() {
+            let USD_rate = 1575.25
+            var inp1 = document.getElementById('inp1')
+            var inp2 = document.getElementById('inp2')
+            var submit = document.getElementById('submit')
+            var load = document.getElementById('loader')
+            var norm = document.getElementById('norm')
+            
+
+                if(inp1.onkeydown) {
+                    submit.style.opacity = .5
+                    norm.innerHTML = 'Checking'
+                    setTimeout(() => {
+                        submit.style.opacity = 1
+                        norm.innerHTML = 'Check now'
+                    }, 1000);
+
+                    load.style.display = 'block'
+                    setTimeout(() => {
+                        load.style.display = 'none'
+                    }, 1000);
+
+                setTimeout(() => {
+                    inp2.value = USD_rate * inp1.value
+                    inp2.placeholder = USD_rate * inp1.value + ' NGN equals ' + inp1.value + ' USD'
+                }, 1000);
+                }
+
+                else {
+
+                }
+        }
+
+    function starts() {
+        let USD_rate = 1575.25
+            var inp1 = document.getElementById('inp1')
+            var inp2 = document.getElementById('inp2')  
+            var submit = document.getElementById('submit')  
+            var load = document.getElementById('loader')
+            var norm = document.getElementById('norm')
+
+                if(inp2.onkeydown) {
+                    submit.style.opacity = .5
+                    norm.innerHTML = 'Checking'
+                    setTimeout(() => {
+                        submit.style.opacity = 1
+                        norm.innerHTML = 'Check now'
+                    }, 1000);
+
+                    load.style.display = 'block'
+                    setTimeout(() => {
+                        load.style.display = 'none'
+                    }, 1000);
+
+                    setTimeout(() => {
+                        inp1.value = inp2.value / USD_rate
+                        inp1.placeholder = inp2.value / USD_rate + ' USD equals ' + inp1.value + ' NGN'
+                    }, 1000);
+                    }
+                }
+    </script>
+</body>
+</html>
